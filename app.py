@@ -88,7 +88,7 @@ if option == 'Gallery Link':
         # Remove the output file
         os.remove('output.json')
     else:
-        st.write('Refresh Page Please enter a gallery link')
+        st.write('Please Enter a Link of The Gallery')
 else:
     gallery_link = None
     username = st.sidebar.text_input('Username')
@@ -131,7 +131,7 @@ else:
         # Remove the output file
         os.remove('output.json')
     else:
-        st.write('Refresh Page Please enter a Username')
+        st.write('Please Enter A Username of The Deviant Artist It will Download All the Images of The Deviant Artist')
     
 
 
