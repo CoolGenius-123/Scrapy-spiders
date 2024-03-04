@@ -3,6 +3,7 @@ import os
 import re
 import subprocess as sp
 import json
+import shutil
 
 # columns matcher
 values = {
@@ -24,6 +25,14 @@ st.title('DeviantArt Downloader')
 # remove output.jsom if it exists
 if os.path.exists('output.json'):
     os.remove('output.json')
+
+# remove images folder if it exists
+if os.path.exists('images'):
+    shutil.rmtree('images')
+
+# remove images.zip if it exists
+if os.path.exists('images.zip'):
+    os.remove('images.zip')
 
 # Sidebar
 st.sidebar.title('Settings')
@@ -55,6 +64,12 @@ if option == 'Gallery Link':
         # Read the output file
         with open('output.json', 'r') as f:
             data = json.load(f)
+
+        # Zip and Download the images folder
+        shutil.make_archive('images', 'zip', 'images')
+
+        # Display the download link
+        st.markdown(f'[Download Images](images.zip)')
 
         col1, col2, col3, col4, col5 = st.columns(5)
         count = 0
@@ -104,6 +119,12 @@ else:
         # Read the output file
         with open('output.json', 'r') as f:
             data = json.load(f)
+
+        # Zip and Download the images folder
+        shutil.make_archive('images', 'zip', 'images')
+
+        # Display the download link
+        st.markdown(f'[Download Images](images.zip)')
 
         col1, col2, col3, col4, col5 = st.columns(5)
         count = 0
