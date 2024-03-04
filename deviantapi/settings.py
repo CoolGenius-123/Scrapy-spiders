@@ -81,9 +81,9 @@ ROBOTSTXT_OBEY = True
 #    "deviantapi.pipelines.DeviantapiPipeline": 300,
 # }
 
-# ITEM_PIPELINES = {'deviantapi.pipelines.CustomImagesPipeline': 1}
-# MEDIA_ALLOW_REDIRECTS = True
-# IMAGES_STORE = 'images'
+ITEM_PIPELINES = {'deviantapi.pipelines.CustomImagesPipeline': 1}
+MEDIA_ALLOW_REDIRECTS = True
+IMAGES_STORE = 'images'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
