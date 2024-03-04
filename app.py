@@ -34,6 +34,7 @@ if os.path.exists('images'):
 if os.path.exists('images.zip'):
     os.remove('images.zip')
 
+
 # Sidebar
 st.sidebar.title('Settings')
 option = st.sidebar.radio('Choose an option', ['Gallery Link', 'Username'])
@@ -68,8 +69,15 @@ if option == 'Gallery Link':
         # Zip and Download the images folder
         shutil.make_archive('images', 'zip', 'images')
 
-        # Display the download link
-        st.markdown(f'[Download Images](./images.zip)')
+        # check if the images.zip exists
+        if os.path.exists('images.zip'):
+            st.write('Images Downloaded Successfully')
+
+            with open('images.zip', 'rb') as f:
+                btn = st.download_button(label='Download Images', data=f.read(), file_name='deviantart.zip', mime='application/zip')
+        
+        else:
+            st.write('Images not downloaded')
 
         col1, col2, col3, col4, col5 = st.columns(5)
         count = 0
@@ -103,7 +111,7 @@ if option == 'Gallery Link':
         # Remove the output file
         os.remove('output.json')
     else:
-        st.write('Please Enter a Link of The Gallery')
+        st.write('Refresh Page Please enter a gallery link')
 else:
     gallery_link = None
     username = st.sidebar.text_input('Username')
@@ -123,8 +131,15 @@ else:
         # Zip and Download the images folder
         shutil.make_archive('images', 'zip', 'images')
 
-        # Display the download link
-        st.markdown(f'[Download Images](./images.zip)')
+        # check if the images.zip exists
+        if os.path.exists('images.zip'):
+            st.write('Images Downloaded Successfully')
+
+            with open('images.zip', 'rb') as f:
+                btn = st.download_button(label='Download Images', data=f.read(), file_name='deviantart.zip', mime='application/zip')
+        
+        else:
+            st.write('Images not downloaded')
 
         col1, col2, col3, col4, col5 = st.columns(5)
         count = 0
@@ -152,9 +167,5 @@ else:
         # Remove the output file
         os.remove('output.json')
     else:
-        st.write('Please Enter A Username of The Deviant Artist It will Download All the Images of The Deviant Artist')
+        st.write('Refresh Page Please enter a Username')
     
-
-
-
-
