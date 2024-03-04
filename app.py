@@ -69,7 +69,7 @@ if option == 'Gallery Link':
         shutil.make_archive('images', 'zip', 'images')
 
         # Display the download link
-        st.markdown(f'[Download Images](images.zip)')
+        st.markdown(f'[Download Images](./images.zip)')
 
         col1, col2, col3, col4, col5 = st.columns(5)
         count = 0
@@ -124,7 +124,7 @@ else:
         shutil.make_archive('images', 'zip', 'images')
 
         # Display the download link
-        st.markdown(f'[Download Images](images.zip)')
+        st.markdown(f'[Download Images](./images.zip)')
 
         col1, col2, col3, col4, col5 = st.columns(5)
         count = 0
