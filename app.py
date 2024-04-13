@@ -43,19 +43,25 @@ if option == 'Gallery Link':
     gallery_link = st.sidebar.text_input('Gallery Link')
     st.sidebar.text('Gallery Link')
     if gallery_link:
-        gallery_link = gallery_link.split('/')
-        if 'all' not in gallery_link:
-            folderid = gallery_link[-2]
+        if 'all' not in gallery_link.split('/'):
 
-            base_link = "https://www.deviantart.com/_puppy/dashared/gallection/contents?username=THE-HYPNOMAN&type=gallery&offset=24&limit=24&folderid=38892697&csrf_token=ktfpqfMNl06v6onF.s9s404.8QK-yF6Hec8YoEO_hhHGhmtIOVgGYkcDPsq7KtrRpnU&da_minor_version=20230710"
+            # finding the username as well
+            username = gallery_link.partition('https://www.deviantart.com/')[2].partition('/gallery')[0]
+
+            # extract the folderid from the gallery link
+            folderid = re.findall(r'\d+', gallery_link)[-1]
+
+            # using the base link to create the final link
+            base_link = "https://www.deviantart.com/_puppy/dashared/gallection/contents?username=THE-HYPNOMAN&type=gallery&offset=0&limit=24&folderid=83189663&csrf_token=oV4S-PrtElXSH-ka.sbvhr3.4uUqvKS7AjapCjy8vV6RXzIbG0YqMjrJmWyrcK4h1X0&da_minor_version=20230710"
+
 
             final_link = re.sub(r'folderid=\d+', f'folderid={folderid}', base_link)
 
-            final_link = final_link.replace('THE-HYPNOMAN', gallery_link[-4])
+            final_link = final_link.replace('THE-HYPNOMAN', username)
         else:
-            base_api = 'https://www.deviantart.com/_puppy/dashared/gallection/contents?username=dollmistress&type=gallery&offset=24&limit=24&all_folder=true&csrf_token=coqpp0Qy8ZBqUOWm.s8jlmm.0HhmNcG2KruMNYdSOxrUMRgewlTeemYivtHMEpGK6tM&da_minor_version=20230710'
+            base_api = "https://www.deviantart.com/_puppy/dashared/gallection/contents?username=dollmistress&type=gallery&offset=72&limit=24&all_folder=true&csrf_token=oV4S-PrtElXSH-ka.sbvhr3.4uUqvKS7AjapCjy8vV6RXzIbG0YqMjrJmWyrcK4h1X0&da_minor_version=20230710"
 
-            username = gallery_link[-4]
+            username = gallery_link.partition('https://www.deviantart.com/')[2].partition('/gallery')[0]
 
             final_link = base_api.replace('dollmistress', username)
 
@@ -117,7 +123,8 @@ else:
     username = st.sidebar.text_input('Username')
     st.sidebar.text('Artist Username')
     if username:
-        base_api = 'https://www.deviantart.com/_puppy/dashared/gallection/contents?username=dollmistress&type=gallery&offset=24&limit=24&all_folder=true&csrf_token=coqpp0Qy8ZBqUOWm.s8jlmm.0HhmNcG2KruMNYdSOxrUMRgewlTeemYivtHMEpGK6tM&da_minor_version=20230710'
+
+        base_api = 'https://www.deviantart.com/_puppy/dashared/gallection/contents?username=dollmistress&type=gallery&offset=72&limit=24&all_folder=true&csrf_token=oV4S-PrtElXSH-ka.sbvhr3.4uUqvKS7AjapCjy8vV6RXzIbG0YqMjrJmWyrcK4h1X0&da_minor_version=20230710'
 
         final_link = base_api.replace('dollmistress', username)
 
@@ -169,3 +176,7 @@ else:
     else:
         st.write('Refresh Page Please enter a Username')
     
+
+
+
+
