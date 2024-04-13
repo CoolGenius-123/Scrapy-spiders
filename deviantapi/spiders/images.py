@@ -21,20 +21,21 @@ def create_image_url(data):
     return image_url
 
 header = {
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Referer": "https://www.deviantart.com/the-hypnoman/gallery",
-        "Sec-Ch-Ua": "\"Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121\"",
-        "Sec-Ch-Ua-Mobile": "?1",
-        "Sec-Ch-Ua-Platform": "\"Android\"",
-        "Sec-Ch-Viewport-Height": "1277",
-        "Sec-Ch-Viewport-Width": "1469",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Mobile Safari/537.36"
-    }
+  "Accept": "application/json, text/plain, */*",
+  "Accept-Encoding": "gzip, deflate, br, zstd",
+  "Accept-Language": "en-US,en;q=0.9",
+  "Referer": "https://www.deviantart.com/dollmistress/gallery/all",
+  "Sec-Ch-Ua": "\"Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"",
+  "Sec-Ch-Ua-Mobile": "?0",
+  "Sec-Ch-Ua-Platform": "\"Windows\"",
+  "Sec-Ch-Viewport-Height": "543",
+  "Sec-Ch-Viewport-Width": "554",
+  "Sec-Fetch-Dest": "empty",
+  "Sec-Fetch-Mode": "cors",
+  "Sec-Fetch-Site": "same-origin",
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
+}
+
 
 
 class ImagesSpider(scrapy.Spider):
@@ -50,10 +51,11 @@ class ImagesSpider(scrapy.Spider):
         cookies = {
                 "_pxvid": "9948a61b-4c6b-11ee-a51f-ac1607864526",
                 "auth_secure": "__b90f3ac403a6c8b3b1af%3B%22f4c67a62c519c41cc31dca98a69ad540%22",
-                "userinfo": "__3720804864ae778bbcfb%3B%7B%22username%22%3A%22randomcoolgenius%22%2C%22uniqueid%22%3A%22bdafe0d623e4caeb3337648c9f6486e4%22%2C%22dvs9-1%22%3A1%2C%22ab%22%3A%22tao-hcs-1-a-3%7Ctao-12c-1-b-2%7Ctao-ot1-1-a-1%7Ctao-cou-1-b-4%22%2C%22pv%22%3A%22c%3D1%2C1%2C1%2C1%22%7D",
-                "auth": "__79c70251c0d45e6c5f14%3B%22c5dad1c800c965dd0c54fe9f37d279dd%22",
-                "td": "0:1349%3B3:445%3B6:610x275%3B10:445%3B12:1469.5384521484375x1277.5384521484375"
+                "userinfo": "__7969a884149334f99af6%3B%7B%22username%22%3A%22randomcoolgenius%22%2C%22uniqueid%22%3A%22bdafe0d623e4caeb3337648c9f6486e4%22%2C%22dvs9-1%22%3A1%2C%22ab%22%3A%22tao-hy3-1-a-5%7Ctao-gaa-1-a-5%22%2C%22pv%22%3A%22c%3D1%2C1%2C1%2C1%22%7D",
+                "auth": "__58b758b3572b357a9f05%3B%22532d5112abad52e1751f48bbd0552a53%22",
+                "td": "0:944%3B3:445%3B10:445%3B12:537.8461303710938x526.7692260742188"
             }
+
 
 
         yield Request(self.start_urls[0], headers=header, cookies=cookies, callback=self.parse)
